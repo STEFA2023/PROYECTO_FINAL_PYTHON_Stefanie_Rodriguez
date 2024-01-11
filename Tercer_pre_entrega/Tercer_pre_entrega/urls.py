@@ -17,9 +17,10 @@ Including another URLconf
 from django.contrib import admin
 from django.urls import path
 import Tercer_pre_entrega.views
+from AppRecetasBlog.views import *
 
 urlpatterns = [
     path('admin/', admin.site.urls),
-    path('', Tercer_pre_entrega.views.bienvenida),
-    path('inicio/', Tercer_pre_entrega.views.bienvenida)
+    path('crear_recetas/',agregar_receta),
+    path('recetas/', ver_recetas_ingresadas),
 ]
