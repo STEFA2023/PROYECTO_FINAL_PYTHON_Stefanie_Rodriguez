@@ -23,4 +23,6 @@ urlpatterns = [
     path('admin/', admin.site.urls),
     path('crear_recetas/',agregar_receta),
     path('recetas/', ver_recetas_ingresadas),
+    path('Login_usuario/', agregar_usuario),
+    path('usuario/', ver_usuario_ingresado),
 ]
