@@ -22,3 +22,11 @@ class usuario_ingresado(models.Model):
     email = models.EmailField(default="")
     pais = models.CharField(max_length = 2000)
     fecha_de_nacimiento = models.DateField()
+
+
+#models Ingreso blog libre
+    
+class ingreso_al_blog(models.Model):
+    titulo = models.CharField(max_length=500)
+    tema = models.CharField(max_length=1000)
+    historia = models.CharField(max_length= 6000)

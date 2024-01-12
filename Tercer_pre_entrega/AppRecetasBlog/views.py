@@ -3,6 +3,8 @@ from AppRecetasBlog.models import recetas_ingresadas
 from AppRecetasBlog.forms import recetas_ingresadas_formulario
 from AppRecetasBlog.models import usuario_ingresado
 from AppRecetasBlog.forms import formulario_usuario_ingresado
+from AppRecetasBlog.models import ingreso_al_blog
+from AppRecetasBlog.forms import formulario_ingreso_al_blog
 
 # Create your views here.
 
@@ -26,9 +28,9 @@ def agregar_receta(request):
     else:
         nuevo_formulario_recetas = recetas_ingresadas_formulario()
 
-    formulario_de_ingreso = recetas_ingresadas_formulario()
+    formulario_de_ingreso_recetas = recetas_ingresadas_formulario()
 
-    return render(request, "creador_de_recetas.html", {"formulario":formulario_de_ingreso})
+    return render(request, "creador_de_recetas.html", {"formulario":formulario_de_ingreso_recetas})
 
 
 def ver_recetas_ingresadas(request):
@@ -57,9 +59,9 @@ def agregar_usuario(request):
     else:
         nuevo_formulario_usuario = formulario_usuario_ingresado()
 
-    formulario_de_ingreso = formulario_usuario_ingresado()
+    formulario_de_ingreso_usuario= formulario_usuario_ingresado()
 
-    return render(request, "Login_usuario.html", {"formulario":formulario_de_ingreso})
+    return render(request, "Login_usuario.html", {"formulario":formulario_de_ingreso_usuario})
 
 
 def ver_usuario_ingresado(request):
@@ -68,3 +70,32 @@ def ver_usuario_ingresado(request):
     return render(request, "usuario.html")
 
 
+# Views Ingreso de historias al blog
+
+def agregar_blog(request):
+
+    if request.method=="POST":
+
+        info_ingreso_al_blog = formulario_ingreso_al_blog(request.POST)
+        if info_ingreso_al_blog.is_valid():
+
+            info = info_ingreso_al_blog.cleaned_data
+
+            nuevo_blog = ingreso_al_blog(titulo=info["titulo"], tema=info["tema"], historia=info["historia"],)
+
+            nuevo_blog.save()
+
+            return render(request, "blog.html")
+
+    else:
+        nuevo_formulario_blog = formulario_ingreso_al_blog()
+
+    formulario_de_ingreso_blog = formulario_ingreso_al_blog()
+
+    return render(request, "ingreso_al_blog.html", {"formulario":formulario_de_ingreso_blog})
+
+
+def ver_blog_ingresado(request):
+
+
+    return render(request, "blog.html")

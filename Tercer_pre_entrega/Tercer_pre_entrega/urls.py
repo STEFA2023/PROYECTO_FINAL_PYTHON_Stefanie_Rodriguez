@@ -25,4 +25,6 @@ urlpatterns = [
     path('recetas/', ver_recetas_ingresadas),
     path('Login_usuario/', agregar_usuario),
     path('usuario/', ver_usuario_ingresado),
+    path('ingreso_al_blog', agregar_blog),
+    path('blog', ver_blog_ingresado),
 ]

@@ -13,6 +13,7 @@ class recetas_ingresadas_formulario(forms.Form):
     cantidad_de_comensales = forms.CharField(max_length = 10)
 
 #forms usuario ingresado
+    
 class formulario_usuario_ingresado(forms.Form):
     nombre = forms.CharField(max_length = 50)
     apellido = forms.CharField(max_length = 50)
@@ -20,3 +21,10 @@ class formulario_usuario_ingresado(forms.Form):
     email = forms.EmailField()
     pais = forms.CharField(max_length = 2000)
     fecha_de_nacimiento = forms.DateField()
+
+#forms Ingreso blog libre
+    
+class formulario_ingreso_al_blog(forms.Form):
+    titulo = forms.CharField(max_length=500)
+    tema = forms.CharField(max_length=1000)
+    historia = forms.CharField(max_length= 6000)
