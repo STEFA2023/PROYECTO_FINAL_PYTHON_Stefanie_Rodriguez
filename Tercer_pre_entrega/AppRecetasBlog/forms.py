@@ -15,12 +15,15 @@ class recetas_ingresadas_formulario(forms.Form):
 #forms usuario ingresado
     
 class formulario_usuario_ingresado(forms.Form):
+    usuario = forms.CharField(max_length=100)
     nombre = forms.CharField(max_length = 50)
     apellido = forms.CharField(max_length = 50)
     edad = forms.IntegerField()
     email = forms.EmailField()
     pais = forms.CharField(max_length = 2000)
     fecha_de_nacimiento = forms.DateField()
+    contraseña1 = forms.CharField(label= "Contraseña",widget=forms.PasswordInput)
+    contraseña2 = forms.CharField(label="Repetir la contraseña", widget=forms.PasswordInput)
 
 #forms Ingreso blog libre
     

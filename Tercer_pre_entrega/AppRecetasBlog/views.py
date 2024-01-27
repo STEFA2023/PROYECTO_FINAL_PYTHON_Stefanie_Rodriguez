@@ -8,6 +8,11 @@ from AppRecetasBlog.forms import formulario_ingreso_al_blog
 
 # Create your views here.
 
+#views Inicio
+
+def inicio(request):
+    return render(request, 'index.html')
+
 #Views Ingreso de recetas
 
 def agregar_receta(request):
@@ -99,3 +104,8 @@ def ver_blog_ingresado(request):
 
 
     return render(request, "blog.html")
+
+
+
+def sobre_mi(request):
+    return render(request, 'sobre_mi.html')
