@@ -1,1 +1,6 @@
-Tercer pre_entrega del proyecto de Python
+Proyecto final de Python
+
+
+Superuser:
+name: stefa
+password: stefa123
