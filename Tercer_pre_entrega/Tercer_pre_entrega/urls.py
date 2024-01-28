@@ -21,12 +21,12 @@ from AppRecetasBlog.views import *
 
 urlpatterns = [
     path('admin/', admin.site.urls),
-    path('inicio/', inicio),
-    path('crear_recetas/',agregar_receta),
-    path('recetas/', ver_recetas_ingresadas),
-    path('Login_usuario/', agregar_usuario),
-    path('usuario/', ver_usuario_ingresado),
-    path('ingreso_al_blog/', agregar_blog),
-    path('blog/', ver_blog_ingresado),
-    path('sobre_mi/', sobre_mi),
+    path('inicio/', inicio, name= "Inicio"),
+    path('crear_recetas/',agregar_receta, name="Agregar_Receta"),
+    path('recetas/', ver_recetas_ingresadas, name="Ver_Recetas_Ingresadas"),
+    path('Login_usuario/', agregar_usuario, name="Agregar_Usuario"),
+    path('usuario/', ver_usuario_ingresado, name="Ver_Usuario_Ingresado"),
+    path('ingreso_al_blog/', agregar_blog, name="Agregar_Blog"),
+    path('blog/', ver_blog_ingresado, name="Ver_Blog_Ingresado"),
+    path('sobre_mi/', sobre_mi, name="Sobre_Mi"),
 ]
