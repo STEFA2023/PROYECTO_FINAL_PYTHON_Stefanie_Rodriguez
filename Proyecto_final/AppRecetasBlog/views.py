@@ -5,7 +5,7 @@ from AppRecetasBlog.models import usuario_ingresado
 from AppRecetasBlog.forms import formulario_usuario_ingresado
 from AppRecetasBlog.models import ingreso_al_blog
 from AppRecetasBlog.forms import formulario_ingreso_al_blog
-
+from django.utils import timezone
 # Create your views here.
 
 #views Inicio
@@ -86,7 +86,7 @@ def agregar_blog(request):
 
             info = info_ingreso_al_blog.cleaned_data
 
-            nuevo_blog = ingreso_al_blog(titulo=info["titulo"], tema=info["tema"], historia=info["historia"],)
+            nuevo_blog = ingreso_al_blog(titulo=info["titulo"], tema=info["tema"], historia=info["historia"], fecha = timezone.now())
 
             nuevo_blog.save()
 
@@ -102,9 +102,9 @@ def agregar_blog(request):
 
 def ver_blog_ingresado(request):
 
+    entradas_blog = ingreso_al_blog.objects.all()
 
-    return render(request, "blog.html")
-
+    return render(request, "blog.html", {'entradas_blog': entradas_blog})
 
 
 def sobre_mi(request):

@@ -18,6 +18,8 @@ from django.contrib import admin
 from django.urls import path
 import Proyecto_final.views
 from AppRecetasBlog.views import *
+from django.conf import settings
+from django.conf.urls.static import static
 
 urlpatterns = [
     path('admin/', admin.site.urls),
@@ -30,3 +32,4 @@ urlpatterns = [
     path('blog/', ver_blog_ingresado, name="Ver_Blog_Ingresado"),
     path('sobre_mi/', sobre_mi, name="Sobre_Mi"),
 ]
+
