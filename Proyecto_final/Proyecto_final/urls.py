@@ -1,5 +1,5 @@
 """
-URL configuration for Tercer_pre_entrega project.
+URL configuration for Proyecto_final project.
 
 The `urlpatterns` list routes URLs to views. For more information please see:
     https://docs.djangoproject.com/en/5.0/topics/http/urls/
@@ -16,7 +16,7 @@ Including another URLconf
 """
 from django.contrib import admin
 from django.urls import path
-import Tercer_pre_entrega.views
+import Proyecto_final.views
 from AppRecetasBlog.views import *
 
 urlpatterns = [
