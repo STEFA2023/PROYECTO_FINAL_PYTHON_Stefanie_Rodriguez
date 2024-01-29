@@ -1,10 +1,11 @@
 from django import forms
-
+from .models import recetas_ingresadas
 # Create your forms here.
 
 #forms recetas ingresadas
 
 class recetas_ingresadas_formulario(forms.Form):
+    
     nombre = forms.CharField(max_length = 50)
     autor = forms.CharField(max_length = 20)
     ingrediente_principal = forms.CharField(max_length = 100)

@@ -8,13 +8,13 @@ class recetas_ingresadas(models.Model):
 
     def __str__(self):
         return f"Nombre: {self.nombre} ------ Autor: {self.autor}"
-
+    
     nombre = models.CharField(max_length = 50)
     autor = models.CharField(max_length = 20)
     ingrediente_principal = models.CharField(max_length = 100)
     ingredientes = models.TextField()
-    procedimiento = models.CharField(max_length = 2000)
-    cantidad_de_comensales = models.CharField(max_length = 10)
+    procedimiento = models.TextField()
+    cantidad_de_comensales = models.IntegerField(max_length = 10)
 
 
 #models Ingreso de Usuario
