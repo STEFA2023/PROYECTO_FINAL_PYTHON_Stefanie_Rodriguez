@@ -31,5 +31,6 @@ urlpatterns = [
     path('ingreso_al_blog/', agregar_blog, name="Agregar_Blog"),
     path('blog/', ver_blog_ingresado, name="Ver_Blog_Ingresado"),
     path('sobre_mi/', sobre_mi, name="Sobre_Mi"),
+    path('contacto/', contacto, name="Contacto"),
 ]
 

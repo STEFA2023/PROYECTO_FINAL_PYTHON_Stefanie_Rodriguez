@@ -30,3 +30,11 @@ class ingreso_al_blog(models.Model):
     titulo = models.CharField(max_length=500)
     tema = models.CharField(max_length=1000)
     historia = models.CharField(max_length= 6000)
+
+
+#models Contacto
+
+class info_de_contacto(models.Model):
+    Nombre_Completo = models.CharField(max_length= 100)
+    email = models.EmailField()
+    consulta = models.CharField(max_length= 6000)

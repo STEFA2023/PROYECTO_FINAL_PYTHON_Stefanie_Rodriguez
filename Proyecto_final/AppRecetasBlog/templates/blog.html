@@ -8,6 +8,8 @@ Todos tenemos historias por contar, y aqui son todas bienvenidas.
 
 {% endblock %}
 
+{% block contenido_principal %}
+
 {% for entrada in entradas_blog %}
 <div>
     <h2>{{ entrada.titulo }}</h2>
@@ -16,3 +18,6 @@ Todos tenemos historias por contar, y aqui son todas bienvenidas.
     <p>{{ entrada.historia }}</p>
 </div>
 {% endfor %}
+
+{% endblock %}
+

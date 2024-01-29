@@ -7,3 +7,21 @@
 En este espacio encontrarás las recetas que todos los usuarios compartieron con esta comunidad.
 
 {% endblock %}
+
+
+{% block contenido_principal %}                                
+
+{% for entrada_receta in recetas_ingresadas %}
+<div>
+    <h2>{{ entrada_receta.titulo }}</h2>
+    <p>Nombre: {{ entrada_receta.nombre }}</p>
+    <p>Autor: {{ entrada_receta.autor }}</p>
+    <p>Ingrediente Principal: {{ entrada_receta.ingrediente_principal }}</p>
+    <p>Ingredientes: {{ entrada_receta.ingredientes }}</p>
+    <p>Procedimiento: {{ entrada_receta.procedimiento }}</p>
+    <p>Cantidad de comensales: {{ entrada_receta.cantidad_de_comensales }}</p>
+</div>
+{% endfor %}
+
+
+{% endblock %}

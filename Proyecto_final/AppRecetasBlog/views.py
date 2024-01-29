@@ -5,6 +5,8 @@ from AppRecetasBlog.models import usuario_ingresado
 from AppRecetasBlog.forms import formulario_usuario_ingresado
 from AppRecetasBlog.models import ingreso_al_blog
 from AppRecetasBlog.forms import formulario_ingreso_al_blog
+from AppRecetasBlog.models import info_de_contacto
+from AppRecetasBlog.forms import formulario_de_contacto
 from django.utils import timezone
 # Create your views here.
 
@@ -37,12 +39,12 @@ def agregar_receta(request):
 
     return render(request, "creador_de_recetas.html", {"formulario":formulario_de_ingreso_recetas})
 
+#Recetas en la base de datos: 
 
 def ver_recetas_ingresadas(request):
 
-
-    return render(request, "recetas.html")
-
+    recetas = recetas_ingresadas.objects.all()
+    return render(request, "recetas.html", {'recetas_ingresadas': recetas})
 
 #Views Ingreso de Usuarios
 
@@ -99,6 +101,7 @@ def agregar_blog(request):
 
     return render(request, "ingreso_al_blog.html", {"formulario":formulario_de_ingreso_blog})
 
+#blogs en la base de datos:
 
 def ver_blog_ingresado(request):
 
@@ -106,6 +109,14 @@ def ver_blog_ingresado(request):
 
     return render(request, "blog.html", {'entradas_blog': entradas_blog})
 
+#views Sobre mi:
 
 def sobre_mi(request):
     return render(request, 'sobre_mi.html')
+
+
+#views Contacto:
+
+def contacto(request):
+    formulario = formulario_de_contacto()
+    return render(request, 'contacto.html', {'formulario_de_contacto': formulario})

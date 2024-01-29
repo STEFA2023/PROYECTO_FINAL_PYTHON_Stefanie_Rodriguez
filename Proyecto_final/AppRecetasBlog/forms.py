@@ -31,3 +31,10 @@ class formulario_ingreso_al_blog(forms.Form):
     titulo = forms.CharField(max_length=500)
     tema = forms.CharField(max_length=1000)
     historia = forms.CharField(max_length= 6000)
+
+#forms Contacto
+
+class formulario_de_contacto(forms.Form):
+    Nombre_Completo = forms.CharField(max_length= 100)
+    email = forms.EmailField()
+    consulta = forms.CharField(max_length= 6000)
