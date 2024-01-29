@@ -3,16 +3,13 @@
 {% load static %}
 
 {% block titulo %}
-
-Ingresa aqui tu receta para contribuir con el blog!
-
+Editar Receta
 {% endblock %}
 
 {% block contenido_principal %}
-
 <form action="" method="post">
     {% csrf_token %}
-    {{formulario.as_p}}
-    <input type="submit" value="Agregar Receta">
+    {{ formulario.as_p }}
+    <input type="submit" value="Guardar Cambios">
 </form>
 {% endblock %}

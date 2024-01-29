@@ -15,7 +15,11 @@ from django.utils import timezone
 def inicio(request):
     return render(request, 'index.html')
 
-#Views Ingreso de recetas
+
+#CRUD recetas:
+
+
+#Views Crear de recetas
 
 def agregar_receta(request):
 
@@ -39,12 +43,38 @@ def agregar_receta(request):
 
     return render(request, "creador_de_recetas.html", {"formulario":formulario_de_ingreso_recetas})
 
-#Recetas en la base de datos: 
+# Views Ver recetas en la base de datos: 
 
 def ver_recetas_ingresadas(request):
 
     recetas = recetas_ingresadas.objects.all()
     return render(request, "recetas.html", {'recetas_ingresadas': recetas})
+
+
+#Views Editar recetas:
+
+def editar_receta(request, receta_id):
+    receta = get_object_or_404(recetas_ingresadas, pk=receta_id)
+
+    if request.method == "POST":
+        formulario_recetas = recetas_ingresadas_formulario(request.POST, instance=receta)
+        if formulario_recetas.is_valid():
+            formulario_recetas.save()
+            return redirect('ver_recetas_ingresadas')
+
+    else:
+        formulario_recetas = recetas_ingresadas_formulario(instance=receta)
+
+    return render(request, "editar_receta.html", {"formulario": formulario_recetas})
+
+# Views Eliminar recetas:
+
+def eliminar_receta(request, receta_id):
+    receta = get_object_or_404(recetas_ingresadas, pk=receta_id)
+    receta.delete()
+    return redirect('ver_recetas_ingresadas')
+
+
 
 #Views Ingreso de Usuarios
 
