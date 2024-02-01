@@ -1,0 +1,21 @@
+{% extends "padre.html" %}
+
+{% load static %}
+
+{% block titulo %}
+
+Ingresa tus datos y forma parte de esta gran comunidad!
+
+{% endblock %}
+
+{% block contenido_principal %}
+
+<!--FORMULARIO DE REGISTRO DE USUARIO-->
+
+    {% csrf_token %}
+
+    {{form.as_p}}
+
+    <button type="submit">Registrate</button>
+    
+{% endblock %}

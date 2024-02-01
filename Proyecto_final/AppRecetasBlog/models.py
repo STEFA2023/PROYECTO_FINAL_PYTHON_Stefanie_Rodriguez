@@ -1,4 +1,5 @@
 from django.db import models
+from django.utils import timezone
 
 # Create your models here.
 
@@ -40,6 +41,7 @@ class ingreso_al_blog(models.Model):
         return f"Titulo: {self.titulo} ------ Tema: {self.tema}"
     
     titulo = models.CharField(max_length=500)
+    fecha = models.DateTimeField(default=timezone.now)
     tema = models.CharField(max_length=1000)
     historia = models.CharField(max_length= 6000)
 

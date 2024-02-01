@@ -1,4 +1,5 @@
 from django.shortcuts import render
+from django.contrib.auth.forms import AuthenticationForm, UserCreationForm
 from django.shortcuts import get_object_or_404, redirect
 from AppRecetasBlog.models import recetas_ingresadas
 from AppRecetasBlog.forms import recetas_ingresadas_formulario
@@ -53,33 +54,49 @@ def ver_recetas_ingresadas(request):
 
 #Views Ingreso de Usuarios
 
-def agregar_usuario(request):
+def login_request(request):
 
-    if request.method=="POST":
+    if request.method == 'POST':
+        form = AuthenticationForm(request, data = request.POST)
 
-        info_form_usuario_ingresado = formulario_usuario_ingresado(request.POST)
-        if info_form_usuario_ingresado.is_valid():
+        if form.is_valid():
 
-            info = info_form_usuario_ingresado.cleaned_data
+            usuario = form.cleaned_data.get('username')
+            contrasenia = form.cleaned_data.get('password')
 
-            nuevo_usuario = usuario_ingresado(nombre=info["nombre"], apellido=info["apellido"], edad=info["edad"], email=info["email"], pais=info["pais"], fecha_de_nacimiento=info["fecha_de_nacimiento"])
+            user = authenticate(username= usuario, password=contrasenia)
 
-            nuevo_usuario.save()
+            if user is not None:
+                login(request, user)
 
-            return render(request, "usuario.html")
+                return render(request, "../AppRecetasBlog/templates/index.html", {"mensaje":f"Bienvenido {usuario}"})
+            else:
+                return render(request, "../AppRecetasBlog/templates/index.html", {"mensaje":"Datos incorrectos"})
+        else:
 
-    else:
-        nuevo_formulario_usuario = formulario_usuario_ingresado()
+            return render(request, "../AppRecetasBlog/templates/index.html", {"mensaje":"Formulario erroneo"})
 
-    formulario_de_ingreso_usuario= formulario_usuario_ingresado()
+    form = AuthenticationForm()
 
-    return render(request, "Login_usuario.html", {"formulario":formulario_de_ingreso_usuario})
+    return render(request, "login.html", {"form": form})
 
+#views registro de usuario:
 
-def ver_usuario_ingresado(request):
+def register(request):
 
+    if request.method == 'POST':
 
-    return render(request, "usuario.html")
+            form = UserCreationForm(request.POST)
+            if form.is_valid():
+
+                username = form.cleaned_data['username']
+                form.save()
+                return render(request,"../AppRecetasBlog/templates/index.html",  {"mensaje":"Usuario Creado :)"})
+
+    else:       
+            form = UserCreationForm()     
+
+    return render(request,"registro_usuario.html" ,  {"form":form})
 
 
 # Views Ingreso de historias al blog

@@ -1,0 +1,21 @@
+{% extends "padre.html" %}
+
+{% load static %}
+
+{% block titulo %}
+
+Ingresa tus datos y accede a tu cuenta!
+
+{% endblock %}
+
+{% block contenido_principal %}
+
+<!--FORMULARIO DE INGRESO DE USUARIO-->
+
+    {% csrf_token %}
+
+    {{form.as_p}}
+
+    <button type="submit">Iniciar Sesión</button>
+    
+{% endblock %}

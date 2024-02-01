@@ -15,6 +15,10 @@ Including another URLconf
     2. Add a URL to urlpatterns:  path('blog/', include('blog.urls'))
 """
 from django.contrib import admin
+from AppRecetasBlog.views import login_request
+from AppRecetasBlog.views import register
+from django.contrib.auth.forms import AuthenticationForm, UserCreationForm
+from django.contrib.auth import login, logout, authenticate
 from django.urls import path, include
 from AppRecetasBlog.views import *
 from django.conf import settings
@@ -25,8 +29,8 @@ urlpatterns = [
     path('inicio/', inicio, name= "Inicio"),
     path('crear_recetas/',agregar_receta, name="Agregar_Receta"),
     path('recetas/', ver_recetas_ingresadas, name="Ver_Recetas_Ingresadas"),
-    path('Login_usuario/', agregar_usuario, name="Agregar_Usuario"),
-    path('usuario/', ver_usuario_ingresado, name="Ver_Usuario_Ingresado"),
+    path('Login_usuario/', login_request, name="Login"),
+    path('registro_usuario/', register, name= "Registro_usuario"),
     path('ingreso_al_blog/', agregar_blog, name="Agregar_Blog"),
     path('blog/', ver_blog_ingresado, name="Ver_Blog_Ingresado"),
     path('sobre_mi/', sobre_mi, name="Sobre_Mi"),

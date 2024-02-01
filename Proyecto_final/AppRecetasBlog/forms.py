@@ -1,4 +1,6 @@
 from django import forms
+from django.utils import timezone
+from .models import ingreso_al_blog
 from .models import recetas_ingresadas
 # Create your forms here.
 
@@ -28,10 +30,17 @@ class formulario_usuario_ingresado(forms.Form):
 
 #forms Ingreso blog libre
     
-class formulario_ingreso_al_blog(forms.Form):
+class formulario_ingreso_al_blog(forms.ModelForm):
     titulo = forms.CharField(max_length=500)
-    tema = forms.CharField(max_length=1000)
-    historia = forms.CharField(max_length= 6000)
+    fecha = forms.DateTimeField()
+
+    def __init__(self, *args, **kwargs):
+        super().__init__(*args, **kwargs)
+        self.fields['fecha'].initial = timezone.now()
+
+    class Meta:
+        model = ingreso_al_blog
+        fields = ['titulo', 'tema', 'historia']
 
 #forms Contacto
 
