@@ -1,4 +1,6 @@
 from django import forms
+from django.contrib.auth.forms import UserCreationForm
+from django.contrib.auth.models import User
 from django.utils import timezone
 from .models import ingreso_al_blog
 from .models import recetas_ingresadas
@@ -27,6 +29,18 @@ class formulario_usuario_ingresado(forms.Form):
     fecha_de_nacimiento = forms.DateField()
     contraseña1 = forms.CharField(label= "Contraseña",widget=forms.PasswordInput)
     contraseña2 = forms.CharField(label="Repetir la contraseña", widget=forms.PasswordInput)
+
+#form regitro de usuario:
+    
+class UserCreationForm(UserCreationForm):
+    email: forms.EmailField()
+    password1: forms.CharField(label='Contraseña', widget=forms.PasswordInput)
+    password2: forms.CharField(label='Repetir la contraseña', widget=forms.PasswordInput)
+
+    class Meta:
+        model = User
+        fields = ['username', 'email', 'password1', 'password2']
+        help_text = {k:"" for k in fields}
 
 #forms Ingreso blog libre
     

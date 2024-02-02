@@ -17,6 +17,7 @@ Including another URLconf
 from django.contrib import admin
 from AppRecetasBlog.views import login_request
 from AppRecetasBlog.views import register
+from django.contrib.auth.views import LogoutView
 from django.contrib.auth.forms import AuthenticationForm, UserCreationForm
 from django.contrib.auth import login, logout, authenticate
 from django.urls import path, include
@@ -31,6 +32,7 @@ urlpatterns = [
     path('recetas/', ver_recetas_ingresadas, name="Ver_Recetas_Ingresadas"),
     path('Login_usuario/', login_request, name="Login"),
     path('registro_usuario/', register, name= "Registro_usuario"),
+    path('logout', LogoutView.as_view(template_name = 'AppRecetasBlog/logout.html'), name= 'Logout'),
     path('ingreso_al_blog/', agregar_blog, name="Agregar_Blog"),
     path('blog/', ver_blog_ingresado, name="Ver_Blog_Ingresado"),
     path('sobre_mi/', sobre_mi, name="Sobre_Mi"),
